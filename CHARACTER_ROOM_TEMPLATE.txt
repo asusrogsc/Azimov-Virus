@@ -1,0 +1,103 @@
+CHARACTER ROOM LOCATIONS TEMPLATE
+==================================
+
+For each character file, follow these steps:
+
+1. SIMPLIFY the interact_[character]_room label:
+   Replace all the old scene and dialogue code with:
+
+   label interact_[character]_room:
+       """Room interaction with [Character] (Room XXX)"""
+       if "[character]" not in met_characters:
+           $ met_characters.append("[character]")
+           $ character_relations["[character]"]["friend"] += 10
+           $ current_location = "[character]_room"
+       else:
+           $ character_relations["[character]"]["friend"] += 1
+           $ current_location = "[character]_room"
+       
+       $ game_time.advance_time(minutes=5)
+       return
+
+2. ADD AT THE END OF EACH FILE:
+
+   # ============================================
+   # [CHARACTER_UPPER] ROOM LOCATIONS
+   # ============================================
+
+   label [character]_room_show_description:
+       $ bg_image = get_location_image("room", game_time, character_meal_times)
+       scene expression bg_image
+       with fade
+       x "I'm in [Character]'s room (Room XXX). [Brief description]."
+       return
+
+   label [character]_room_show_menu:
+       if "[character]" not in met_characters:
+           $ met_characters.append("[character]")
+           $ character_relations["[character]"]["friend"] += 10
+           show madd boy think at left_small
+           with dissolve
+           x "I knock on the door and [Character] answers."
+           show [character] smile at right_small
+           with dissolve
+           [character]_says "Hello! What brings you here?"
+           show madd boy blush at left_small
+           with dissolve
+           x "I wanted to introduce myself."
+       else:
+           $ character_relations["[character]"]["friend"] += 1
+           show madd boy blush at left_small
+           with dissolve
+           x "I knock on [Character]'s door."
+           show [character] smile at right_small
+           with dissolve
+           [character]_says "What is it?"
+           show madd boy blush at left_small
+           with dissolve
+           x "Just wanted to chat for a bit."
+           show [character] laugh at right_small
+           with dissolve
+           [character]_says "Sure, if you don't take too long."
+       
+       menu:
+           "Leave the room":
+               $ current_location = "[FLOOR_LOCATION]"
+               $ game_time.advance_time(minutes=1)
+       
+       return
+
+   label [character]_room_bathroom_show_description:
+       $ bg_image = get_location_image("room", game_time, character_meal_times)
+       scene expression bg_image
+       with fade
+       x "I'm in [Character]'s bathroom. It's clean and organized."
+       return
+
+   label [character]_room_bathroom_show_menu:
+       x "I'm in [Character]'s bathroom. What would I like to do?"
+       
+       menu:
+           "Go back to room":
+               $ current_location = "[character]_room"
+       
+       return
+
+FLOOR LOCATIONS FOR "Go back to room":
+- Floor 2 characters (nicks, roman, aftb, jund, shas): "floor_2"
+- Floor 3 characters (aman, abhi, aryn): "hallway_3rd"
+- Floor 4 characters (kernel, mayank): "floor_4"
+
+CHARACTER INFO:
+- nicks: Room 201, Floor 2 (DONE - see nicks.rpy)
+- roman: Room 202, Floor 2 (DONE - see roman.rpy)
+- aftb: Room 204, Floor 2 (NEEDS UPDATE)
+- jund: Room 205, Floor 2 (NEEDS UPDATE)
+- shas: Room 207, Floor 2 (NEEDS UPDATE)
+- aman: Room 301, Floor 3 (NEEDS UPDATE)
+- abhi: Room 306, Floor 3 (NEEDS UPDATE)
+- aryn: Room 307, Floor 3 (NEEDS UPDATE)
+- kernel: Room 402, Floor 4 (NEEDS UPDATE)
+- mayank: Room 404, Floor 4 (NEEDS UPDATE)
+
+Use the example from nicks.rpy and roman.rpy as reference.

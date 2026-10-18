@@ -1,0 +1,104 @@
+EMOTIONS TO REPLACE IN aftb.rpy
+=====================================
+
+DECLARED MADD EMOTIONS (available in script.rpy):
+- stand
+- disgusted
+- salivating
+- inheat
+- shocked
+- relieved
+- think
+- rbg
+- depressed
+- worried
+- horrified
+- angry
+- stress
+- sad
+- focused
+- stressed
+- happy
+- blush
+
+UNDECLARED MADD EMOTIONS (need replacement):
+1. cool → stand
+2. embarassed → shocked (or worried)
+3. flustered2 → worried
+4. flustered → worried
+5. curious → think
+6. hesitant → worried
+7. embarrassed → shocked
+8. confused → think
+9. nervous → worried
+10. uncertain → worried
+11. scared → horrified
+12. deep blush → salivating
+13. conflicted → think
+14. submissive → relieved
+15. humiliated → horrified
+16. obedient → relieved
+17. traumatized → horrified
+18. shaken → shocked
+19. trembling → worried
+20. broken → depressed
+21. resigned → sad
+22. dissociating → depressed
+23. shamed → angry
+24. ashamed → angry
+25. defeated → sad
+26. processing → think
+27. reluctant → worried
+28. uncomfortable → worried
+29. paralyzed → shocked
+30. desperate → horrified
+31. numb → depressed
+
+DECLARED AFTB EMOTIONS (available in script.rpy):
+- angry
+- bite lips smile
+- confused
+- evil smirk
+- laugh
+- smile
+- smirk
+- wide smile
+- sigh
+- predatory gaze
+- calculating
+- aroused
+- satisfied
+- possessive
+- dominant
+- commanding
+- smug
+- contemptuous
+
+UNDECLARED AFTB EMOTIONS (need replacement):
+1. intoxicated pleasure → aroused
+2. slow burn → calculating
+3. methodical → calculating
+4. marked prey → predatory gaze
+5. merciless → contemptuous
+6. expectant → commanding
+7. controlling → dominant
+8. complete ownership → possessive
+9. observant → calculating
+10. anticipatory → aroused
+11. apex predator → smug
+12. triumphant → smug
+13. patient → calculating
+14. plotting → calculating
+15. masterful → commanding
+16. cruel → contemptuous
+17. inevitable → possessive
+18. confident → smirk
+19. patient predator → predatory gaze
+20. focused → calculating
+21. authoritative → commanding
+
+SPECIAL CASES (multi-word emotions that need fixing):
+- "show aftb at right_small" (no emotion) → "show aftb smirk at right_small"
+- Any other "show aftb at " without emotion → add closest emotion
+
+All replacements prioritize semantic similarity and thematic appropriateness.

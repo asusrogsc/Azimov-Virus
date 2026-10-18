@@ -1,0 +1,189 @@
+# Quick Reference - All Scene Names
+
+## Quick Copy-Paste References
+
+### Hallway Scenes
+```
+scene_confrontation_roman_hallway_level1
+scene_grabwrist_roman_hallway_level1
+scene_grabshoulder_roman_hallway_level1
+scene_grabneck_roman_hallway_level1
+scene_grabass_roman_hallway_level2
+scene_grabwaist_roman_hallway_level2
+scene_spank_roman_hallway_level3
+scene_sniff_roman_hallway_level3
+```
+
+### Water Bottle Scenes
+```
+scene_drop_roman_waterbottle_level1
+scene_jumpbutt_roman_waterbottle_level1
+scene_grabass_roman_waterbottle_level2
+scene_grabthighs_roman_waterbottle_level2
+scene_spank_roman_waterbottle_level3
+scene_sniffbutt_roman_waterbottle_level3
+```
+
+### Water Cooler Scenes
+```
+scene_intro_roman_watercooler_level1
+scene_casual_roman_watercooler_level1
+scene_grabwaist_roman_watercooler_level2
+scene_grabshoulderneck_roman_watercooler_level2
+scene_spank_roman_watercooler_level3
+scene_grabwaistass_roman_watercooler_level3
+```
+
+### Mess Hall Scenes
+```
+scene_intro_roman_messhall_level1
+scene_namemistake_roman_messhall_level1
+scene_grabthighs_roman_messhall_level2
+scene_grabneck_roman_messhall_level2
+scene_spank_roman_messhall_level3
+scene_sniff_roman_messhall_level3
+```
+
+### Roman's Room Scenes
+```
+scene_firstmeet_roman_room_level1
+scene_gentletouch_roman_room_level1
+scene_grabwrist_roman_room_level1
+scene_tripgrab_roman_room_level2
+scene_sitfeet_roman_room_level2
+scene_historydomination_roman_room_level3
+scene_grabthighs_roman_room_level3
+```
+
+### Character Close-ups
+```
+scene_roman_predatory_smirk
+scene_madd_confused_consent
+```
+
+---
+
+## Syntax Examples for Use
+
+### In roman.rpy (showing scenes):
+```renpy
+scene expression scene_grabwrist_roman_hallway_level1 with dissolve
+```
+
+### In undeclared.rpy (declaring scenes):
+```renpy
+image scene_grabwrist_roman_hallway_level1 = "images/Scenes/hallway_roman_grab_wrist.PNG"
+```
+
+---
+
+## Grouping by Action Type
+
+### Grabbing Scenes
+- `scene_grabwrist_roman_hallway_level1`
+- `scene_grabshoulder_roman_hallway_level1`
+- `scene_grabneck_roman_hallway_level1` / `scene_grabneck_roman_messhall_level2`
+- `scene_grabass_roman_hallway_level2` / `scene_grabass_roman_waterbottle_level2`
+- `scene_grabwaist_roman_hallway_level2` / `scene_grabwaist_roman_watercooler_level2`
+- `scene_grabthighs_roman_waterbottle_level2` / `scene_grabthighs_roman_messhall_level2` / `scene_grabthighs_roman_room_level3`
+- `scene_grabshoulderneck_roman_watercooler_level2`
+- `scene_grabwaistass_roman_watercooler_level3`
+- `scene_grabwrist_roman_room_level1`
+
+### Spanking Scenes
+- `scene_spank_roman_hallway_level3`
+- `scene_spank_roman_waterbottle_level3`
+- `scene_spank_roman_watercooler_level3`
+- `scene_spank_roman_messhall_level3`
+
+### Sniffing Scenes
+- `scene_sniff_roman_hallway_level3`
+- `scene_sniffbutt_roman_waterbottle_level3`
+- `scene_sniff_roman_messhall_level3`
+
+### Location-Specific Scenes
+- Hallway: 8 scenes
+- Water Bottle: 6 scenes (drop, jump, grabs, spank, sniff)
+- Water Cooler: 6 scenes (intro, casual, grabs, spank, waist-ass)
+- Mess Hall: 6 scenes (intro, name, grabs, spank, sniff)
+- Room: 7 scenes (first meet, gentle, grab, trip, sit, history, thighs)
+
+---
+
+## Level Progression
+
+### Level 1 Scenes (Initial Contact - 12 total)
+```
+scene_confrontation_roman_hallway_level1
+scene_grabwrist_roman_hallway_level1
+scene_grabshoulder_roman_hallway_level1
+scene_grabneck_roman_hallway_level1
+scene_drop_roman_waterbottle_level1
+scene_jumpbutt_roman_waterbottle_level1
+scene_intro_roman_watercooler_level1
+scene_casual_roman_watercooler_level1
+scene_intro_roman_messhall_level1
+scene_namemistake_roman_messhall_level1
+scene_firstmeet_roman_room_level1
+scene_gentletouch_roman_room_level1
+```
+
+### Level 2 Scenes (Escalation - 11 total)
+```
+scene_grabass_roman_hallway_level2
+scene_grabwaist_roman_hallway_level2
+scene_grabass_roman_waterbottle_level2
+scene_grabthighs_roman_waterbottle_level2
+scene_grabwaist_roman_watercooler_level2
+scene_grabshoulderneck_roman_watercooler_level2
+scene_grabthighs_roman_messhall_level2
+scene_grabneck_roman_messhall_level2
+scene_grabwrist_roman_room_level1
+scene_tripgrab_roman_room_level2
+scene_sitfeet_roman_room_level2
+```
+
+### Level 3 Scenes (Extreme - 10 total)
+```
+scene_spank_roman_hallway_level3
+scene_sniff_roman_hallway_level3
+scene_spank_roman_waterbottle_level3
+scene_sniffbutt_roman_waterbottle_level3
+scene_spank_roman_watercooler_level3
+scene_grabwaistass_roman_watercooler_level3
+scene_spank_roman_messhall_level3
+scene_sniff_roman_messhall_level3
+scene_historydomination_roman_room_level3
+scene_grabthighs_roman_room_level3
+```
+
+---
+
+## Character Substitution Template
+
+For adding new characters, use this template:
+
+```
+scene_[action]_[new_character]_[location]_[level]
+```
+
+Example for Mayank in kitchen:
+```
+scene_grabwrist_mayank_kitchen_level1
+scene_spank_mayank_kitchen_level3
+```
+
+Example for Aman in bathroom:
+```
+scene_intro_aman_bathroom_level1
+scene_sniff_aman_bathroom_level3
+```
+
+---
+
+## File Locations
+
+- **Scene Declarations**: `game/undeclared.rpy`
+- **Scene Usage**: `game/roman.rpy`
+- **Scene Images**: `game/images/Scenes/`
+- **Documentation**: `game/SCENE_NAMING_COMPLETE.md`

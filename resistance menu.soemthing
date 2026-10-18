@@ -1,0 +1,64 @@
+    menu:
+        "Let him grope through the towel":
+            
+            if act_shower_intimacy_1a > (char_intimacy + 1):
+                show madd distressed at left_small
+                x "( Wait... I can't... I can't let him do this... )"
+
+                jump shower_menu_stop_grope_towel
+            else:
+                show madd resigned at left_small
+                x "( I can't stop him... )"
+                $ character_relations["dad"]["anger"] = max(0, character_relations["dad"].get("anger", 0) - 5)
+                
+        
+        "Stop him":
+            jump shower_menu_stop_grope_towel
+    
+    jump shower_action_1_grope_towel
+    
+    label shower_menu_stop_grope_towel:
+        if act_shower_intimacy_1a <= char_intimacy:
+            show madd distressed at left_small
+            x "( He's done worse things to me... what's the difference now? )"
+            $ character_relations["dad"]["anger"] = max(0, character_relations["dad"].get("anger", 0) - 5)
+            jump shower_action_1_grope_towel
+        else:
+            $ dad_lust = character_relations["dad"].get("lust", 0)
+            $ dad_dominance = character_relations["dad"].get("dominance", 0)
+            $ threat_level = dad_lust + (dad_dominance / max(act_shower_intimacy_1a - char_intimacy, 1))
+            
+            if madd_willpower > threat_level:
+                show madd stressed at left_small
+                x "( No... I need to stop this... NOW! )"
+                
+                show madd determined at left_small
+                x "( I push against him with all my strength )"
+                
+                show dad coercive at right_small
+                dad_thinks "(What? She's pushing away?)"
+                
+                show madd shaken at left_small
+                x "( I scramble away, wrapping my towel tighter )"
+                
+                $ dad_lust_cost = character_relations["dad"].get("lust", 0)
+                $ madd_willpower = max(0, madd_willpower - dad_lust_cost)
+                $ character_relations["dad"]["anger"] += 10
+                
+                jump shower_nothing_happens
+            else:
+                show madd helpless at left_small
+                x "( I try to push away... but he holds me firmly... )"
+                
+                show madd paralyzed at left_small
+                x "( My body won't obey... I'm trapped in his grip... )"
+                
+                show madd distressed at left_small
+                x "( I can't... I can't escape... he won't let me... )"
+                
+                $ madd_willpower -= 5
+                $ character_relations["dad"]["anger"] += 5
+                $ character_relations["dad"]["lust"]=min(character_relations["dad"]["lust"]-madd_willpower,0)
+                $ character_relations["dad"]["dominance"] += 5
+                $ character_relations["dad"]["intimacy"] = max(character_relations["dad"].get("intimacy", 0), act_shower_intimacy_1a-3)
+                jump shower_action_1_grope_towel

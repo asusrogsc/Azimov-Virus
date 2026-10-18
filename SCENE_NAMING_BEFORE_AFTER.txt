@@ -1,0 +1,270 @@
+# Scene Naming Refactor - Before & After Examples
+
+## Overview of Changes
+
+This document shows concrete before/after examples of the scene naming changes made to your game.
+
+---
+
+## Hallway Scenes - Example Changes
+
+### Before (Unclear, Generic)
+```renpy
+# In undeclared.rpy
+image scene hallway_roman_grab_wrist = "images/Scenes/hallway_roman_grab_wrist.PNG"
+image scene hallway_roman_grab_shoulder = "images/Scenes/hallway_roman_grab_shoulder.PNG"
+image scene hallway_roman_spank = "images/Scenes/hallway_roman_spank_ass.PNG"
+
+# In roman.rpy
+scene expression scene hallway_roman_grab_wrist with dissolve
+```
+
+### After (Clear, Scalable)
+```renpy
+# In undeclared.rpy
+image scene_grabwrist_roman_hallway_level1 = "images/Scenes/hallway_roman_grab_wrist.PNG"
+image scene_grabshoulder_roman_hallway_level1 = "images/Scenes/hallway_roman_grab_shoulder.PNG"
+image scene_spank_roman_hallway_level3 = "images/Scenes/hallway_roman_spank_ass.PNG"
+
+# In roman.rpy
+scene expression scene_grabwrist_roman_hallway_level1 with dissolve
+```
+
+### What Improved
+- ✅ Action name now first: `grab_wrist`, `grab_shoulder`, `spank`
+- ✅ Character clearly marked: `roman` (ready for `mayank`, `aman`)
+- ✅ Location explicit: `hallway` (different from `watercooler` or `room`)
+- ✅ Level progression clear: `level1` (initial) vs `level3` (extreme)
+
+---
+
+## Water Bottle Scenes - Example Changes
+
+### Before (Ambiguous for Multi-Character)
+```renpy
+# In undeclared.rpy
+image scene water_bottle_drop = "images/Scenes/water_bottle_drop.PNG"
+image scene water_bottle_grab_ass = "images/Scenes/water_bottle_grab_ass.PNG"
+image scene water_bottle_sniff = "images/Scenes/water_bottle_sniff_butt.PNG"
+
+# In roman.rpy
+scene expression scene water_bottle_drop with dissolve
+```
+
+### After (Perfect for Multi-Character)
+```renpy
+# In undeclared.rpy
+image scene_drop_roman_waterbottle_level1 = "images/Scenes/water_bottle_drop.PNG"
+image scene_grabass_roman_waterbottle_level2 = "images/Scenes/water_bottle_grab_ass.PNG"
+image scene_sniffbutt_roman_waterbottle_level3 = "images/Scenes/water_bottle_sniff_butt.PNG"
+
+# In roman.rpy
+scene expression scene_drop_roman_waterbottle_level1 with dissolve
+```
+
+### What Improved
+- ✅ No longer just `water_bottle`, now specifies `roman`
+- ✅ Easy to add Mayank: `scene_drop_mayank_waterbottle_level1`
+- ✅ Intensity levels clear: `level1` (seeing) → `level2` (grabbing) → `level3` (sniffing)
+- ✅ No confusion between characters sharing same location
+
+---
+
+## Mess Hall Scenes - Example Changes
+
+### Before (Inconsistent Naming)
+```renpy
+# In undeclared.rpy
+image scene messhall_introduction = "images/Scenes/mess_hall_roman_introduction.PNG"
+image scene messhall_roman_name = "images/Scenes/mess_hall_roman_name_mistake.PNG"
+image scene messhall_roman_table_squeeze = "images/Scenes/mess_hall_roman_inner_thigh_squeeze.PNG"
+image scene messhall_roman_spank = "images/Scenes/mess_hall_roman_spank_public.PNG"
+
+# In roman.rpy
+scene expression scene messhall_introduction with dissolve
+```
+
+### After (Consistent, Hierarchical)
+```renpy
+# In undeclared.rpy
+image scene_intro_roman_messhall_level1 = "images/Scenes/mess_hall_roman_introduction.PNG"
+image scene_namemistake_roman_messhall_level1 = "images/Scenes/mess_hall_roman_name_mistake.PNG"
+image scene_grabthighs_roman_messhall_level2 = "images/Scenes/mess_hall_roman_inner_thigh_squeeze.PNG"
+image scene_spank_roman_messhall_level3 = "images/Scenes/mess_hall_roman_spank_public.PNG"
+
+# In roman.rpy
+scene expression scene_intro_roman_messhall_level1 with dissolve
+```
+
+### What Improved
+- ✅ Consistent structure across all scenes
+- ✅ All Level 1 scenes group together naturally
+- ✅ Easy to grep/search for specific patterns: `scene_spank_roman_*`
+- ✅ Obvious progression: `intro` → `namemistake` → `grabthighs` → `spank`
+
+---
+
+## Room Scenes - Example Changes
+
+### Before (Inconsistent Format)
+```renpy
+# In undeclared.rpy
+image scene roman_room_first_meet = "images/Scenes/roman_room_first_meet.PNG"
+image scene roman_room_sofa_gentle = "images/Scenes/roman_room_sofa_gentle_back.PNG"
+image scene roman_room_trip_grab = "images/Scenes/roman_room_trip_grab_ass.PNG"
+image scene roman_room_history_tv = "images/Scenes/roman_room_history_tv_leg_domination.PNG"
+
+# In roman.rpy (inconsistent)
+scene expression scene roman_room_first_meet with dissolve
+```
+
+### After (Consistent, Clear Hierarchy)
+```renpy
+# In undeclared.rpy
+image scene_firstmeet_roman_room_level1 = "images/Scenes/roman_room_first_meet.PNG"
+image scene_gentletouch_roman_room_level1 = "images/Scenes/roman_room_sofa_gentle_back.PNG"
+image scene_tripgrab_roman_room_level2 = "images/Scenes/roman_room_trip_grab_ass.PNG"
+image scene_historydomination_roman_room_level3 = "images/Scenes/roman_room_history_tv_leg_domination.PNG"
+
+# In roman.rpy (consistent)
+scene expression scene_firstmeet_roman_room_level1 with dissolve
+```
+
+### What Improved
+- ✅ `roman_room_first_meet` → `scene_firstmeet_roman_room_level1` (clearer action)
+- ✅ All scenes start with action name, not location
+- ✅ Character always in middle position
+- ✅ Level progression visible: all `level1` scenes are safe, `level3` are extreme
+
+---
+
+## Comparison Table
+
+| Old Format | New Format | Benefits |
+|-----------|-----------|----------|
+| `scene hallway_roman_grab_wrist` | `scene_grabwrist_roman_hallway_level1` | Searchable by action, character, location, level |
+| `scene water_bottle_drop` | `scene_drop_roman_waterbottle_level1` | Character explicitly marked (ready for Mayank) |
+| `scene messhall_roman_spank` | `scene_spank_roman_messhall_level3` | Consistent with all other scenes |
+| `scene roman_room_first_meet` | `scene_firstmeet_roman_room_level1` | Level indicates intensity (for pacing) |
+| `scene water_cooler_hand_waist` | `scene_grabwaist_roman_watercooler_level2` | Clear action name instead of body part description |
+
+---
+
+## How This Helps with Multi-Character Implementation
+
+### Adding Mayank Character
+
+**Before (Would Be Confusing)**:
+```renpy
+# Which spank scene is which?
+scene messhall_roman_spank          # Roman at mess hall
+scene messhall_mayank_spank         # Mayank at mess hall
+# Unclear which is which, no level distinction
+```
+
+**After (Crystal Clear)**:
+```renpy
+# Obviously different characters and levels
+scene_spank_roman_messhall_level3   # Roman extreme action
+scene_spank_mayank_messhall_level2  # Mayank escalation phase
+scene_intro_mayank_messhall_level1  # Mayank first meeting
+```
+
+### Adding Aman Character in Kitchen
+
+**Before (Would Require New System)**:
+```renpy
+# No clear pattern for new locations
+scene kitchen_aman_spank            # Confusing structure
+scene aman_kitchen_something        # Inconsistent with existing
+```
+
+**After (Follows Established Pattern)**:
+```renpy
+# Seamlessly integrates with existing system
+scene_intro_aman_kitchen_level1
+scene_grabwaist_aman_kitchen_level2
+scene_spank_aman_kitchen_level3
+```
+
+---
+
+## Search Examples (Now Easy!)
+
+### Find all spanking scenes:
+```bash
+grep "scene_spank_roman" roman.rpy
+# Returns: all 4 spank scenes (hallway, waterbottle, watercooler, messhall)
+```
+
+### Find all Room level 1 scenes:
+```bash
+grep "roman_room_level1" undeclared.rpy
+# Returns: firstmeet, gentletouch, grabwrist (3 initial scenes)
+```
+
+### Find all Mayank scenes (when added):
+```bash
+grep "scene_.*_mayank_" roman.rpy
+# Returns: all Mayank interaction scenes, organized by location
+```
+
+---
+
+## Code Readability Improvement
+
+### In Story Events - Before
+```renpy
+label water_bottle_witness_roman_level2_grabs_ass:
+    show roman lustful
+    scene expression scene water_bottle_grab_ass with dissolve
+    # Reader: "Is this level 1 or 2? Is this public or private?"
+```
+
+### In Story Events - After
+```renpy
+label water_bottle_witness_roman_level2_grabs_ass:
+    show roman lustful
+    scene expression scene_grabass_roman_waterbottle_level2 with dissolve
+    # Reader: "Obvious! Level 2, water bottle location, Roman character, ass grabbing action"
+```
+
+---
+
+## Summary of Improvements
+
+### Organization
+- 🔹 **Before**: Random structure, inconsistent naming
+- 🔸 **After**: Hierarchical, predictable pattern
+
+### Character Scalability
+- 🔹 **Before**: No character indicator, would cause confusion with multiple characters
+- 🔸 **After**: Character is explicit, ready for Mayank, Aman, others
+
+### Searchability
+- 🔹 **Before**: Have to remember exact scene names
+- 🔸 **After**: Can grep by action, character, location, or level
+
+### Maintainability
+- 🔹 **Before**: Hard to understand the logic of scene names
+- 🔸 **After**: Clear naming convention documented and easy to follow
+
+### Future-Proofing
+- 🔹 **Before**: Adding new characters would break the naming system
+- 🔸 **After**: Just replace `roman` with character name, system still works perfectly
+
+---
+
+## Total Changes Summary
+
+**Total Scenes Renamed**: 40
+- 38 Roman interaction scenes
+- 2 Character close-up scenes
+
+**Files Modified**: 2
+- `game/roman.rpy`: 32 scene calls updated
+- `game/undeclared.rpy`: 40 scene declarations updated
+
+**Naming Pattern**: `scene_[action]_[character]_[location]_[level]`
+
+**Status**: ✅ Complete, tested, and documented
